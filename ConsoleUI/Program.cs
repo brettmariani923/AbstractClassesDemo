@@ -67,6 +67,7 @@ namespace ConsoleUI
                 Console.WriteLine(vehicle.Make);
                 Console.WriteLine(vehicle.Model);
                 Console.WriteLine(vehicle.Year);
+                
                 if (vehicle is Motorcycle machine)
                 {
                     Console.WriteLine(machine.HasTwoWheels);
