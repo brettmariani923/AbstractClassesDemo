@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -47,8 +48,41 @@ namespace ConsoleUI
 
             // Call each of the drive methods for one car and one motorcycle
 
-            #endregion            
-            Console.ReadLine();
+            #endregion      
+
+            List<Vehicle> vehicles= new List<Vehicle>();
+
+            Car automobile1 = new Car() { HasFourDoors = true, Year = 1900, Make = "Ford", Model = "Model T"};
+            Motorcycle automobile2 = new Motorcycle() {HasTwoWheels = true, Year = 1980, Make = "Suzuki", Model = "GS1100"}; 
+            Vehicle automobile3 = new Car() {HasFourDoors = false, Year = 2020, Make = "Honda", Model = "Civic"};
+            Vehicle automobile4 = new Motorcycle() { HasTwoWheels = true, Year = 2005, Make = "BMW", Model = "BoomerMobile" };
+
+            vehicles.Add(automobile1);
+            vehicles.Add(automobile2);
+            vehicles.Add(automobile3);
+            vehicles.Add(automobile4);
+
+            foreach (var vehicle in vehicles)
+            {
+                Console.WriteLine(vehicle.Make);
+                Console.WriteLine(vehicle.Model);
+                Console.WriteLine(vehicle.Year);
+                if (vehicle is Motorcycle machine)
+                {
+                    Console.WriteLine(machine.HasTwoWheels);
+                }
+                else if (vehicle is Car mobile)
+                {
+                    Console.WriteLine(mobile.HasFourDoors);
+                }
+            }
+
+            Console.WriteLine(automobile1.DriveAbstract());
+            Console.WriteLine(automobile1.DriveVirtual());
+
+            Console.WriteLine(automobile4.DriveAbstract());
+            Console.WriteLine(automobile4.DriveVirtual());
+
         }
     }
 }
